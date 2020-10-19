@@ -1,9 +1,25 @@
 import sys
 
 def return_allergies(input):
-    if input <= 0 or input > 255:
+    if input <= 0:
         print("Please provide valid input.")
         return
+    result = []
+    variable = 256
+    variables = []
+    if input > 255:
+        while variable <= input:
+            variables.append(variable)
+            variable = variable * 2
+    for v in reversed(variables):
+        print(input)
+        print(v)
+        if input >= v:
+            input = input - v
+            result.append("Unknown")
+        if input < variables[0]:
+            break
+
     data = {
         1: "eggs",
         2: "peanuts",
@@ -14,7 +30,6 @@ def return_allergies(input):
         64: "pollen",
         128: "cats",
     }
-    result = []
     for k, v in reversed(data.items()):
         if input >= k:
             input = input - k
