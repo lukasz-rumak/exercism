@@ -12,8 +12,6 @@ def return_allergies(input):
             variables.append(variable)
             variable = variable * 2
     for v in reversed(variables):
-        print(input)
-        print(v)
         if input >= v:
             input = input - v
             result.append("Unknown")
