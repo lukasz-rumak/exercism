@@ -8,11 +8,13 @@ def count_words(input):
         input = input[:-1]
     input = input + " "
     for i in input:
+        if i == "," or i == "." or i == "?" or i == "!":
+            continue
         if i != " ":
             tmp = tmp + i
         else:
             if tmp != "":
-                words.append(tmp)
+                words.append(tmp.lower())
             tmp = ""
 
     result = {}
