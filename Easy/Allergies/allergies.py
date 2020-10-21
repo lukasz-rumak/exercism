@@ -1,9 +1,10 @@
 import sys
 
 def return_allergies(input):
+    if type(input) == str:
+        return "Please provide valid input."
     if input <= 0:
-        print("Please provide valid input.")
-        return
+        return "Please provide valid input."
     result = []
     variable = 256
     variables = []
@@ -32,7 +33,7 @@ def return_allergies(input):
         if input >= k:
             input = input - k
             result.append(v)
-    print(result)
+    return result
 
 if __name__ == "__main__":
     return_allergies(int(sys.argv[1]))
