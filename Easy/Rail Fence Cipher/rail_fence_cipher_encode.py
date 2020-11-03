@@ -1,7 +1,7 @@
 import sys
 
 
-def rail_fence_cipher(sentence, rails):
+def rail_fence_cipher_encode(sentence, rails):
     if rails == 1:
         return "Rails cannot be 1"
     sentence_parsed = ""
@@ -32,4 +32,4 @@ def rail_fence_cipher(sentence, rails):
 
 
 if __name__ == "__main__":
-    rail_fence_cipher(str(sys.argv[1]), int(sys.argv[2]))
+    rail_fence_cipher_encode(str(sys.argv[1]), int(sys.argv[2]))
