@@ -34,11 +34,9 @@ def rail_fence_cipher_decode(sentence, rails):
             tmp_index = tmp_index + length
             result[tmp_index] = s
 
-
     final = ""
     for r in result:
         final = final + r
-
     return final
 
 
