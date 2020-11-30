@@ -4,10 +4,14 @@ import sys
 def quicksort(array_to_sort):
     array = array_to_sort
     array = do_quicksort(array, 0, len(array) - 1)
+    #print("Sorted array:", array)
     return array
 
 
 def do_quicksort(array, index_start, index_end):
+    #print("------")
+    #print(array)
+    #print(index_start, index_end)
     if index_start >= index_end:
         return array
     else:
@@ -24,18 +28,6 @@ def do_quicksort(array, index_start, index_end):
         return array
 
 
-def do_quicksort_clean(array):
-    pivot = array[-1]
-    j = 0
-    for i in range(len(array)):
-        if array[i] <= pivot:
-            tmp = array[j]
-            array[j] = array[i]
-            array[i] = tmp
-            j = j + 1
-    return array, j - 1
-
-
 if __name__ == "__main__":
-    quicksort([3,9,4,6,7,1,2,8,5])
+    quicksort([12, 16, 9, 4, -22, 6, 23, 7, -15, 1, 9, 8, 4, 11, 5])
     #quicksort(str(sys.argv[1]))
