@@ -2,22 +2,29 @@ import sys
 
 
 def quicksort(array_to_sort):
-    array_sorted = []
-    for _ in range(len(array_to_sort)):
-        array_sorted.append(0)
     array = array_to_sort
-    sum_array_to_sort = sum(array_to_sort)
-    sum_array_sorted = 0
-    while sum_array_sorted != sum_array_to_sort:
-        array, j = do_quicksort(array)
-        array_sorted[j] = array[j]
-
-        sum_array_sorted = sum_array_sorted + array[j]
-
-    return array_sorted
+    array = do_quicksort(array, 0, len(array) - 1)
+    return array
 
 
-def do_quicksort(array):
+def do_quicksort(array, index_start, index_end):
+    if index_start >= index_end:
+        return array
+    else:
+        pivot = array[index_end]
+        j = index_start
+        for i in range(index_start, index_end + 1):
+            if array[i] <= pivot:
+                tmp = array[j]
+                array[j] = array[i]
+                array[i] = tmp
+                j = j + 1
+        array = do_quicksort(array, index_start, j - 2)
+        array = do_quicksort(array, j, index_end)
+        return array
+
+
+def do_quicksort_clean(array):
     pivot = array[-1]
     j = 0
     for i in range(len(array)):
