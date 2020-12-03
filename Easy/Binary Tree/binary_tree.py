@@ -1,8 +1,8 @@
 import sys
 
 class Node:
-    def __init__(self, data_value=None):
-        self.data_value = data_value
+    def __init__(self, value=None):
+        self.value = value
         self.next_value_left = None
         self.next_value_right = None
 
@@ -17,7 +17,7 @@ def build_binary_tree(array):
         pointer = tree
         counter = counter + 1
         for _ in range(counter):
-            if pointer.data_value > i.data_value:
+            if pointer.value > i.value:
                 if pointer.next_value_left is None:
                     pointer.next_value_left = i
                     break
@@ -31,7 +31,36 @@ def build_binary_tree(array):
                     pointer = pointer.next_value_right
     return tree
 
+#if number is present in tree?
+#sort the tree
+
+
+def read_tree_in_order(tree):
+    array = [None]
+    pointer = tree
+    switch = True
+    while switch:
+        if pointer.next_value_left is not None:
+            delete_pointer = pointer
+            pointer = pointer.next_value_left
+        if pointer.next_value_left is None:
+            if array[len(array) - 1] != pointer.value:
+                array.append(pointer.value)
+            if pointer.next_value_right is None:
+                delete_pointer.next_value_left = None
+                pointer = tree #delete_pointer?
+            else:
+                pointer = pointer.next_value_right
+
+
+
+
+    return array
+
+
+
 
 if __name__ == "__main__":
-    build_binary_tree([6, 3, 8, 1, 9, 7, 2, 4, 0])
+    tree = build_binary_tree([6, 3, 8, 1, 9, 7, 2, 4, 0, 17, -14, -22, -8, -4, -9])
+    array = read_tree_in_order(tree)
     #build_binary_tree(str(sys.argv[1]))
