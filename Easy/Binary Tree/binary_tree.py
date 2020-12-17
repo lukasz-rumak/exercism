@@ -64,40 +64,28 @@ class SortTree:
         return sorted_array
 
 
-class GenerateRandomArray:
+class FindNumberInTree:
 
-    def __init__(self, from_number, to_number, array_length):
-        self.from_number = from_number
-        self.to_number = to_number
-        self.array_length = array_length
+    def __init__(self, number, tree):
+        self.number = number
+        self.tree = tree
 
-    def generate_random_array_with_int(self):
-        return random.sample(range(self.from_number, self.to_number), self.array_length)
-
-
-class TestTree:
-
-    def __init__(self, random_array, tree_array_sorted):
-        self.random_array = random_array
-        self.tree_array_sorted = tree_array_sorted
-
-    def test_tree_array_sorted(self):
-        self.random_array.sort()
-        counter = 0
-        for _ in range(len(self.random_array)):
-            if self.random_array[counter] != self.tree_array_sorted[counter]:
-                return False
-            counter = counter + 1
-        return True
+    def find_number(self):
+        pointer = self.tree
+        while True:
+            if self.number == pointer.value:
+                return True
+            elif self.number > pointer.value:
+                if pointer.next_value_right is not None:
+                    pointer = pointer.next_value_right
+                else:
+                    return False
+            else:
+                if pointer.next_value_left is not None:
+                    pointer = pointer.next_value_left
+                else:
+                    return False
 
 
 if __name__ == "__main__":
-    random_array = GenerateRandomArray(-30, 30, 30).generate_random_array_with_int()
-    binary_tree = BuildBinaryTree(random_array).build_binary_tree() #[6, 3, 8, 1, 9, 7, 2, 4, 0, 17, -14, -22, -8, -4, -9, 11]
-    tree_array_sorted = SortTree(binary_tree).read_tree_in_order()
-    result = TestTree(random_array, tree_array_sorted).test_tree_array_sorted()
-    str = "123"
-    #build_binary_tree(str(sys.argv[1]))
-
-    # if number is present in tree?
-    # sort the tree
+    BuildBinaryTree(str(sys.argv[1])).build_binary_tree()
